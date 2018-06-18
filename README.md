@@ -37,3 +37,8 @@ These options can be set via the environment variable -e flag:
 - **STATISTICS_CUMULATIVE**: enable cumulative statistics, without clearing them after printing. (Default: "no", Possible Values: "yes, no")
 - **EXTENDED_STATISTICS**: enable extended statistics (query types, answer codes, status) printed from unbound-control. (Default: "no", Possible Values: "yes, no")
 - **INTERFACE**: Sets the interface to listen on useful when using --net=host (Default 0.0.0.0, Possible Values: "<ipaddress>", "<ipaddress>@<port>")
+
+# Examples
+  docker stop unbound; docker rm unbound ; docker run --name unbound -d --restart always -p 53:53/udp -p 53:53  -e  NUM_THREADS=4 -e VERBOSITY=1 secns/unbound
+  if you created config file (local*.conf , stub*.conf , forward*.conf ) in /Volumes/DataHD/Docker/unbound/config , using next command: 
+  docker stop unbound; docker rm unbound ; docker run --name unbound -d --restart always -p 53:53/udp -p 53:53 -v /Volumes/DataHD/Docker/unbound/config:/usr/local/etc/unbound/conf.d -e NUM_THREADS=4 -e VERBOSITY=1 secns/unbound
